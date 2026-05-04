@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body { height: 100%; }
+body {
+  background: radial-gradient(1200px 600px at 10% -10%, rgba(124,92,255,0.20), transparent 60%),
+              radial-gradient(1000px 500px at 110% 10%, rgba(33,212,253,0.18), transparent 60%),
+              #0b0b12;
+  color: #e8e8f0;
+}
+
+.btn {
+  @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2 font-medium transition;
+}
+.btn-primary {
+  @apply btn bg-gradient-to-r from-accent to-accent2 text-ink hover:opacity-90 disabled:opacity-40 disabled:cursor-not-allowed;
+}
+.btn-ghost {
+  @apply btn border border-white/15 text-white/90 hover:bg-white/5 disabled:opacity-40 disabled:cursor-not-allowed;
+}
+.card {
+  @apply rounded-2xl bg-white/[0.04] border border-white/10 p-5 backdrop-blur;
+}
+.label { @apply text-sm font-medium text-white/80; }
+.hint { @apply text-xs text-white/50; }
