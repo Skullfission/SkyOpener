@@ -6,3 +6,4 @@ node_modules/
 # Don't commit user-supplied music binaries by default
 assets/music/*
 !assets/music/README.md
+!assets/music/SkyOpener.mp3
