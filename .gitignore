@@ -1,7 +1,8 @@
 node_modules/
-.next/
-out/
-dist/
-.env*
-*.log
 .DS_Store
+.vscode/
+.idea/
+
+# Don't commit user-supplied music binaries by default
+assets/music/*
+!assets/music/README.md

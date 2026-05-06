@@ -1,51 +1,58 @@
 # EyeOpener
 
-Generate audio-reactive videos from royalty-free music and rights-cleared images,
-entirely in your browser. No upload, no server, no third-party API.
+A behind-the-ship rail shooter that captures the feel and controls of classic
+SNES/N64-era space combat — built from scratch with original artwork (no
+copyrighted assets) and your own original soundtrack.
 
-## How it works
+## Run it
 
-1. You upload an audio track (royalty-free) and one or more images (your own or
-   public-domain / licensed).
-2. The Web Audio API analyses the track in real time (FFT + bass-energy beat
-   detection).
-3. A `<canvas>` renders an audio-reactive composition: zoom-pulsing images,
-   beat-driven cross-fades, frequency bars, and a hue-shifting background.
-4. `MediaRecorder` records the canvas video stream + audio stream into a
-   downloadable WebM file.
+It's pure HTML + ES modules + Three.js (CDN). No build step.
 
-## Compliance
-
-EyeOpener does not let you generate a video without affirming that:
-
-- the audio is royalty-free or otherwise licensed for your use, and
-- the images are yours or are public-domain / licensed for your use.
-
-A sidebar links to several reputable sources of royalty-free music and
-public-domain images. Always read the source&#39;s license terms.
-
-## Run locally
-
-Requires Node.js 18+ (tested on Node 24) and a modern Chromium-, Firefox- or
-Safari-based browser.
-
-```bash
-npm install
-npm run dev
-# open http://localhost:3000
+```
+# from the repo root, start any static server, e.g.:
+npx serve .
+# or
+python -m http.server 8080
 ```
 
-Production build:
+Then open the URL it prints (e.g. http://localhost:8080) in a modern browser.
+You can also just open `index.html` directly in some browsers, but a local
+server is recommended so ES module imports and music files load reliably.
 
-```bash
-npm run build
-npm start
+## Controls
+
+| Action            | Keyboard                          | Mouse           | Gamepad           |
+|-------------------|-----------------------------------|-----------------|-------------------|
+| Steer             | `W` `A` `S` `D` / arrow keys      | Move reticle    | Left stick        |
+| Fire              | `Space`                           | Left click      | `A` / Right trig. |
+| Barrel roll left  | `Q`, double-tap `A` / `←`         | —               | Left bumper       |
+| Barrel roll right | `E`, double-tap `D` / `→`         | —               | Right bumper      |
+| Boost             | `Shift`                           | —               | Right trigger     |
+| Brake             | `Ctrl`                            | —               | Left trigger      |
+
+A barrel roll grants brief invulnerability and deflects incoming projectiles —
+use it to dodge enemy fire or shave past pillars.
+
+## Music
+
+This is intentionally plug-and-play for original tracks. See
+[`assets/music/README.md`](assets/music/README.md). Either drop a file named
+`track1.mp3` (or `.ogg`/`.wav`) into `assets/music/`, or pick any audio file
+from the start screen.
+
+## Project layout
+
+```
+index.html        Page shell, HUD, start overlay
+src/main.js       Boot + music
+src/game.js       Game loop, world, enemies, obstacles, collisions
+src/ship.js       Original procedural ship + enemy meshes
+src/input.js      Unified keyboard / mouse / gamepad
+assets/music/     Drop your original soundtrack here
 ```
 
-## Notes & limitations
+## Notes
 
-- Recording is real-time: a 3-minute song renders in ~3 minutes.
-- Output format is WebM (VP9/VP8 + Opus). It plays in all modern browsers and
-  in VLC. Convert to MP4 with FFmpeg if needed:
-  `ffmpeg -i eyeopener.webm -c:v libx264 -c:a aac out.mp4`
-- All processing happens locally; nothing is uploaded.
+- All ship and enemy geometry is procedurally built from primitives — no
+  copyrighted designs are used or referenced.
+- The soundtrack is provided by the player; nothing copyrighted is bundled.
