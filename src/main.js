@@ -23,7 +23,7 @@ let game = null;
 
 async function tryDefaultMusic() {
   const candidates = [
-    'assets/music/track1.mp3', 'assets/music/track1.ogg', 'assets/music/track1.wav',
+    'assets/music/SkyOpener.mp3', 'assets/music/SkyOpener.ogg', 'assets/music/SkyOpener.wav',
     'assets/music/track.mp3',  'assets/music/track.ogg',  'assets/music/track.wav',
   ];
   for (const url of candidates) {

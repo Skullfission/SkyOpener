@@ -37,7 +37,7 @@ use it to dodge enemy fire or shave past pillars.
 
 This is intentionally plug-and-play for original tracks. See
 [`assets/music/README.md`](assets/music/README.md). Either drop a file named
-`track1.mp3` (or `.ogg`/`.wav`) into `assets/music/`, or pick any audio file
+`SkyOpener.mp3` (or `.ogg`/`.wav`) into `assets/music/`, or pick any audio file
 from the start screen.
 
 ## Project layout
